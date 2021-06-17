@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ArtCollection = ({ artData }) => {
+const ArtPieces = ({ artData }) => {
   console.log(artData);
-  if (artData) {
+  if (artData && artData.data) {
     return (
       <>
         <h1>artcollection</h1>
@@ -10,7 +10,8 @@ const ArtCollection = ({ artData }) => {
       </>
     );
   }
+  console.log(artData);
   return <h1>loading...</h1>;
 };
 
-export default ArtCollection;
+export default ArtPieces;
