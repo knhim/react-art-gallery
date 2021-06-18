@@ -6,7 +6,18 @@ const ArtPieces = ({ artData }) => {
 
   if (artData && artData.data) {
     return artData.data.records.map((record) => {
-      return <ArtPiece key={record.id} url={record.primaryimageurl} />;
+      return (
+        <ArtPiece
+          key={record.id}
+          url={record.primaryimageurl}
+          title={record.title}
+          medium={record.medium}
+          dated={record.dated}
+          worktypes={record.worktypes[0].worktype}
+          dimensions={record.dimensions}
+          classification={record.classification}
+        />
+      );
     });
   }
 
