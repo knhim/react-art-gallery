@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
-// import ArtPieces from './ArtPieces';
+import ArtPieces from './ArtPieces';
 import axios from 'axios';
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <>
       <h1 className="text-red-500">hello</h1>
-      {/* <ArtPieces artData={artData} /> */}
+      <ArtPieces artData={artData} />
     </>
   );
 };
