@@ -1,13 +1,14 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
+import ArtDescriptions from './ArtDescriptions';
 import axios from 'axios';
 
 const App = () => {
   const [artData, setArtData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchArtData = async () => {
       try {
         const response = await axios(`https://api.harvardartmuseums.org/object?`, {
           params: {
@@ -15,7 +16,7 @@ const App = () => {
             hasimage: 1,
             size: '25',
             copyright: 'null',
-            classification: 'any',
+            classification: 'Paintings',
             century: 'any',
             medium: 'any',
             sort: 'random',
@@ -23,18 +24,27 @@ const App = () => {
           },
         });
         setArtData(response);
-        console.log(artData);
       } catch (err) {
         console.error(err);
       }
     };
-    fetchData();
+
+    const fetchArtLocation = async () => {
+      try {
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchArtData();
+    console.log(artData);
   }, []);
 
   return (
     <>
       <h1 className="text-red-500">hello</h1>
-      <ArtPieces artData={artData} />
+      {/* <ArtPieces artData={artData} /> */}
+      <ArtDescriptions artData={artData} />
     </>
   );
 };
