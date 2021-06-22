@@ -1,10 +1,22 @@
 import React from 'react';
 
-const ArtPiece = ({ url, title, medium, dated, worktypes, dimensions, classification }) => {
+const ArtPiece = ({
+  primaryimageurl,
+  title,
+  medium,
+  dated,
+  worktypes,
+  dimensions,
+  classification,
+}) => {
+  if (primaryimageurl === null) {
+    return null;
+  }
+
   return (
     <>
       <div className="border-2 border-gray-500 m-2">
-        <img src={url} alt="hello" />
+        <img src={primaryimageurl} alt="hello" />
         <div className="p-2">
           <h1>{title}</h1>
           <p>{medium}</p>

@@ -9,7 +9,7 @@ const ArtPieces = ({ artData }) => {
       return (
         <ArtPiece
           key={record.id}
-          url={record.primaryimageurl}
+          primaryimageurl={record.primaryimageurl}
           title={record.title}
           medium={record.medium}
           dated={record.dated}
