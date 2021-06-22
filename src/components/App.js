@@ -24,20 +24,22 @@ const App = () => {
           },
         });
         setArtData(response);
+        await artData.data.records.forEach((element) => console.log('hello'));
       } catch (err) {
         console.error(err);
       }
     };
 
-    const fetchArtLocation = async () => {
-      try {
-      } catch (err) {
-        console.error(err);
-      }
-    };
+    // const fetchArtLocation = async () => {
+    //   try {
+    //     const response = await artData.data.records.forEach((element) => console.log('hello'));
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // };
 
     fetchArtData();
-    console.log(artData);
+    // fetchArtLocation();
   }, []);
 
   return (

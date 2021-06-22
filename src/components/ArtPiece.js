@@ -21,9 +21,7 @@ const ArtPiece = ({
           <h1>{title}</h1>
           <p>{medium}</p>
           <p>{dated}</p>
-          <p>{worktypes}</p>
           <p>{dimensions}</p>
-          <p>{classification}</p>
         </div>
       </div>
     </>
