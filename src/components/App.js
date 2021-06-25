@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const App = () => {
   const [artData, setArtData] = useState([]);
+  const [location, setLocation] = useState([]);
 
   useEffect(() => {
     const fetchArtData = async () => {
@@ -24,23 +25,32 @@ const App = () => {
           },
         });
         setArtData(response);
-        // const location = await artData.data.records.forEach((element) => console.log('hello'));
-        // const location = await fetchArtLocation();
+
+        const objectIds = response.data.records.map((element) => element.id);
+        objectIds.forEach(async (id) => {
+          const response2 = await axios(`https://api.harvardartmuseums.org/object/${id}`, {
+            params: {
+              apikey: process.env.REACT_APP_HARVARD_ART_API_KEY,
+            },
+          });
+          setLocation((location) => [...location, response2]);
+        });
       } catch (err) {
         console.error(err);
       }
     };
 
-    const fetchArtLocation = async () => {
-      try {
-        const response = await artData.data.records.forEach((element) => console.log('hello'));
-      } catch (err) {
-        console.error(err);
-      }
-    };
+    // const fetchArtLocation = async () => {
+    //   try {
+    //     const location = await response.data.records.forEach((element) => console.log('hello'));
+    //     console.log(location);
+    //     setLocation(location);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // };
 
     fetchArtData();
-    fetchArtLocation();
   }, []);
 
   return (
