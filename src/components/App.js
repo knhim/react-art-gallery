@@ -1,12 +1,13 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
-import ArtDescriptions from './ArtDescriptions';
+import ArtModal from './ArtModal';
 import axios from 'axios';
 
 const App = () => {
   const [artData, setArtData] = useState([]);
   const [location, setLocation] = useState([]);
+  const [artModal, setArtModal] = useState(false);
 
   useEffect(() => {
     const fetchArtData = async () => {
@@ -40,24 +41,23 @@ const App = () => {
       }
     };
 
-    // const fetchArtLocation = async () => {
-    //   try {
-    //     const location = await response.data.records.forEach((element) => console.log('hello'));
-    //     console.log(location);
-    //     setLocation(location);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // };
-
     fetchArtData();
   }, []);
+
+  if (artModal === true) {
+    return (
+      <>
+        <ArtModal artData={artData} />
+        <h1>Art Gallery</h1>
+        <ArtPieces artData={artData} />
+      </>
+    );
+  }
 
   return (
     <>
       <h1>Art Gallery</h1>
-      <ArtPieces artData={artData} />
-      {/* <ArtDescriptions artData={artData} /> */}
+      <ArtPieces artData={artData} setArtModal={setArtModal} />
     </>
   );
 };
