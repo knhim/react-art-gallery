@@ -37,12 +37,12 @@ const ArtPiece = ({
           <img className="object-contain" src={primaryimageurl} alt={title} />
         </div>
 
-        {/* <div className="p-2">
-            <h1>{title}</h1>
-            <p>{medium}</p>
-            <p>{dated}</p>
-            <p>{dimensions}</p>
-          </div> */}
+        <div className="p-2 hidden">
+          <h1>{title}</h1>
+          <p>{medium}</p>
+          <p>{dated}</p>
+          <p>{dimensions}</p>
+        </div>
       </div>
     </>
   );

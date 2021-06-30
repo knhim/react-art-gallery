@@ -47,7 +47,7 @@ const App = () => {
 
   if (artModal === true) {
     return (
-      <div className="fixed inset-0 w-full h-screen bg-blend-darken bg-black-50">
+      <div className="">
         <ArtModal artModalDetails={artModalDetails} setArtModal={setArtModal} />
         <h1>Art Gallery</h1>
         <ArtPieces artData={artData} />
