@@ -8,6 +8,7 @@ const App = () => {
   const [artData, setArtData] = useState([]);
   const [location, setLocation] = useState([]);
   const [artModal, setArtModal] = useState(false);
+  const [artModalDetails, setArtModalDetails] = useState([]);
 
   useEffect(() => {
     const fetchArtData = async () => {
@@ -46,18 +47,22 @@ const App = () => {
 
   if (artModal === true) {
     return (
-      <>
-        <ArtModal artData={artData} />
+      <div className="fixed inset-0 w-full h-screen bg-blend-darken bg-black-50">
+        <ArtModal artModalDetails={artModalDetails} setArtModal={setArtModal} />
         <h1>Art Gallery</h1>
         <ArtPieces artData={artData} />
-      </>
+      </div>
     );
   }
 
   return (
     <>
       <h1>Art Gallery</h1>
-      <ArtPieces artData={artData} setArtModal={setArtModal} />
+      <ArtPieces
+        artData={artData}
+        setArtModal={setArtModal}
+        setArtModalDetails={setArtModalDetails}
+      />
     </>
   );
 };

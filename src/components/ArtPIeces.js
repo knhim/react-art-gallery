@@ -1,7 +1,7 @@
 import ArtPiece from './ArtPiece';
 import React from 'react';
 
-const ArtPieces = ({ artData, setArtModal }) => {
+const ArtPieces = ({ artData, setArtModal, setArtModalDetails }) => {
   if (artData && artData.data) {
     return artData.data.records.map((record) => {
       return (
@@ -15,6 +15,7 @@ const ArtPieces = ({ artData, setArtModal }) => {
           dimensions={record.dimensions}
           classification={record.classification}
           setArtModal={setArtModal}
+          setArtModalDetails={setArtModalDetails}
         />
       );
     });
