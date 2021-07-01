@@ -2,8 +2,8 @@ import ArtPiece from './ArtPiece';
 import React from 'react';
 
 const ArtPieces = ({ artData }) => {
-  if (artData && artData.data) {
-    return artData.data.records.map((record) => {
+  if (artData) {
+    return artData.map((record) => {
       return (
         <ArtPiece
           key={record.id}

@@ -8,8 +8,6 @@ const ArtPiece = ({
   worktypes,
   dimensions,
   classification,
-  setArtModal,
-  setArtModalDetails,
 }) => {
   const [hideDescription, setHideDescription] = useState(true);
 

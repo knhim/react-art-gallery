@@ -23,22 +23,20 @@ const App = () => {
             place: 'any',
           },
         });
-
-        //filter out data that does not have a primaryurl (won't be able to show the image)
+        //filter out data that does not have a primaryurl
         response = response.data.records.filter((records) => records.primaryimageurl !== null);
-
         setArtData(response);
 
-        // make another request to grab location data
-        // const objectIds = response.data.records.map((element) => element.id);
-        // objectIds.forEach(async (id) => {
-        //   const response2 = await axios(`https://api.harvardartmuseums.org/object/${id}`, {
-        //     params: {
-        //       apikey: process.env.REACT_APP_HARVARD_ART_API_KEY,
-        //     },
-        //   });
-        //   setLocation((location) => [...location, response2]);
-        // });
+        // make another request to grab location data, using the objectId from the first request
+        const objectIds = response.map((element) => element.id);
+        objectIds.forEach(async (id) => {
+          const response2 = await axios(`https://api.harvardartmuseums.org/object/${id}`, {
+            params: {
+              apikey: process.env.REACT_APP_HARVARD_ART_API_KEY,
+            },
+          });
+          setLocation((location) => [...location, response2]);
+        });
       } catch (err) {
         console.error(err);
       }
