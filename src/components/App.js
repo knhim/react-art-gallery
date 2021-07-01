@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const App = () => {
   const [artData, setArtData] = useState([]);
-  const [location, setLocation] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [latLng, setLatLng] = useState([]);
 
   useEffect(() => {
     const fetchArtData = async () => {
@@ -29,13 +30,30 @@ const App = () => {
 
         // make another request to grab location data, using the objectId from the first request
         const objectIds = response.map((element) => element.id);
+        const responseLocationArr = []; //created an array here to access it later for latLng coordinates
+
         objectIds.forEach(async (id) => {
-          const response2 = await axios(`https://api.harvardartmuseums.org/object/${id}`, {
+          const responseLocations = await axios(`https://api.harvardartmuseums.org/object/${id}`, {
             params: {
               apikey: process.env.REACT_APP_HARVARD_ART_API_KEY,
             },
           });
-          setLocation((location) => [...location, response2]);
+          responseLocationArr.push(responseLocations);
+          setLocations(responseLocationArr);
+          // setLocations((locations) => [...locations, responseLocations]);
+        });
+
+        // api request to positionstack to convert location to latLng for maps later
+        //array is empty so figure out what to do
+        responseLocationArr.forEach(async (location) => {
+          const latLngResponse = await axios(`http://api.positionstack.com/v1/forward?`, {
+            params: {
+              access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
+              query: 'sweden',
+            },
+          });
+          setLatLng((latLng) => [...latLng, latLngResponse]);
+          console.log(latLngResponse);
         });
       } catch (err) {
         console.error(err);

@@ -40,6 +40,7 @@ const ArtPiece = ({
 
         <div className="p-2">
           <h1>{title}</h1>
+          <p>Artist:</p>
           <p>{medium}</p>
           <p>{dated}</p>
           <p>{dimensions}</p>
