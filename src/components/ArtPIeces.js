@@ -1,9 +1,9 @@
 import ArtPiece from './ArtPiece';
 import React from 'react';
 
-const ArtPieces = ({ artData, setArtModal, setArtModalDetails }) => {
-  if (artData && artData.data) {
-    return artData.data.records.map((record) => {
+const ArtPieces = ({ artData }) => {
+  if (artData) {
+    return artData.map((record) => {
       return (
         <ArtPiece
           key={record.id}
@@ -14,14 +14,10 @@ const ArtPieces = ({ artData, setArtModal, setArtModalDetails }) => {
           worktypes={record.worktypes[0].worktype}
           dimensions={record.dimensions}
           classification={record.classification}
-          setArtModal={setArtModal}
-          setArtModalDetails={setArtModalDetails}
         />
       );
     });
   }
-
-  console.log(artData);
   return <h1>loading...</h1>;
 };
 
