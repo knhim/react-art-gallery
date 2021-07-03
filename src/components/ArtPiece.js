@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Map from './Map';
 
 const ArtPiece = ({
   primaryimageurl,
@@ -8,6 +9,7 @@ const ArtPiece = ({
   worktypes,
   dimensions,
   classification,
+  latLng,
 }) => {
   const [hideDescription, setHideDescription] = useState(true);
 
@@ -45,6 +47,8 @@ const ArtPiece = ({
           <p>{dated}</p>
           <p>{dimensions}</p>
         </div>
+
+        {/* <Map /> */}
       </div>
     </>
   );

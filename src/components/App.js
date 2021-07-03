@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
+import data from './data';
 import axios from 'axios';
 
 const App = () => {
@@ -29,7 +30,7 @@ const App = () => {
         setArtData(response);
 
         // make another request to grab location data, using the objectId from the first request
-        //after that request is finished, use location data to make a request to positionStack to grab lattitude and longitude
+
         const objectIds = response.map((element) => element.id);
 
         objectIds.forEach(async (id) => {
@@ -41,15 +42,18 @@ const App = () => {
 
           setLocations((locations) => [...locations, responseLocation.data]);
 
-          const latLngResponse = await axios(`http://api.positionstack.com/v1/forward?`, {
-            params: {
-              access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
-              query: responseLocation.data.places[0].displayname,
-            },
-          });
+          //after that request is finished, use location data to make a request to positionStack to grab lattitude and longitude
+          // const latLngResponse = await axios(`http://api.positionstack.com/v1/forward?`, {
+          //   params: {
+          //     access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
+          //     query: responseLocation.data.places[0].displayname,
+          //   },
+          // });
 
-          setLatLng((latLng) => [...latLng, latLngResponse]);
+          // // data.data[0] to grab first value from array response
+          // setLatLng((latLng) => [...latLng, latLngResponse.data.data[0]]);
         });
+        // setArtData((artData) => [...artData, data]);
       } catch (err) {
         console.error(err);
       }
@@ -61,7 +65,7 @@ const App = () => {
   return (
     <>
       <h1>Art Gallery</h1>
-      <ArtPieces artData={artData} />
+      <ArtPieces artData={artData} data={data} /* latLng={latLng}*/ />
     </>
   );
 };

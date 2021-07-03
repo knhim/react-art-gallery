@@ -1,7 +1,7 @@
 import ArtPiece from './ArtPiece';
 import React from 'react';
 
-const ArtPieces = ({ artData }) => {
+const ArtPieces = ({ artData, data }) => {
   if (artData) {
     return artData.map((record) => {
       return (
@@ -14,6 +14,7 @@ const ArtPieces = ({ artData }) => {
           worktypes={record.worktypes[0].worktype}
           dimensions={record.dimensions}
           classification={record.classification}
+          data={data}
         />
       );
     });
