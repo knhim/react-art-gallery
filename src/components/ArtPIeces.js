@@ -1,9 +1,15 @@
 import ArtPiece from './ArtPiece';
-import React from 'react';
+import React, { useState } from 'react';
 
-const ArtPieces = ({ artData, data }) => {
+const ArtPieces = ({ artData, latLng }) => {
+  const [display, setDisplay] = useState(false);
+
+  const toggleCard = (e) => {
+    setDisplay(!display);
+  };
+
   if (artData) {
-    return artData.map((record) => {
+    return artData.map((record, index) => {
       return (
         <ArtPiece
           key={record.id}
@@ -14,7 +20,9 @@ const ArtPieces = ({ artData, data }) => {
           worktypes={record.worktypes[0].worktype}
           dimensions={record.dimensions}
           classification={record.classification}
-          data={data}
+          latLng={latLng[index]}
+          toggleCard={toggleCard}
+          display={display}
         />
       );
     });
