@@ -48,7 +48,7 @@ const ArtPiece = ({
           <p>{dimensions}</p>
         </div>
 
-        {/* <Map /> */}
+        <Map latLng={latLng} />
       </div>
     </>
   );

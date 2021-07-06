@@ -65,7 +65,7 @@ const App = () => {
   return (
     <>
       <h1>Art Gallery</h1>
-      <ArtPieces artData={artData} data={data} /* latLng={latLng}*/ />
+      <ArtPieces artData={artData} latLng={data} /* latLng={latLng}*/ />
     </>
   );
 };
