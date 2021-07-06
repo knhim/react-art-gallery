@@ -2,8 +2,11 @@ import ArtPiece from './ArtPiece';
 import React from 'react';
 
 const ArtPieces = ({ artData, data }) => {
+  let counter = 0;
+
   if (artData) {
     return artData.map((record) => {
+      counter++;
       return (
         <ArtPiece
           key={record.id}
@@ -14,7 +17,7 @@ const ArtPieces = ({ artData, data }) => {
           worktypes={record.worktypes[0].worktype}
           dimensions={record.dimensions}
           classification={record.classification}
-          data={data}
+          location={data[counter]}
         />
       );
     });
