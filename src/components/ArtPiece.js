@@ -10,6 +10,8 @@ const ArtPiece = ({
   dimensions,
   classification,
   latLng,
+  toggleCard,
+  display,
 }) => {
   const [hideDescription, setHideDescription] = useState(true);
 
@@ -17,14 +19,14 @@ const ArtPiece = ({
     return null;
   }
 
-  const handleClick = (e) => {
-    setHideDescription(!hideDescription);
-  };
+  // const handleClick = (e) => {
+  //   setHideDescription(!hideDescription);
+  // };
 
-  if (hideDescription === true) {
+  if (display === false) {
     return (
       <>
-        <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => handleClick(e)}>
+        <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => toggleCard(e)}>
           <div className="flex justify-center">
             <img className="object-contain" src={primaryimageurl} alt={title} />
           </div>
@@ -35,7 +37,7 @@ const ArtPiece = ({
 
   return (
     <>
-      <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => handleClick(e)}>
+      <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => toggleCard(e)}>
         <div className="flex justify-center">
           <img className="object-contain" src={primaryimageurl} alt={title} />
         </div>
@@ -48,7 +50,9 @@ const ArtPiece = ({
           <p>{dimensions}</p>
         </div>
 
-        <Map latLng={latLng} />
+        {/* <div className="">
+          <Map latLng={latLng} />
+        </div> */}
       </div>
     </>
   );

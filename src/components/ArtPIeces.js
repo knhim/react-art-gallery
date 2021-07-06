@@ -1,7 +1,13 @@
 import ArtPiece from './ArtPiece';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ArtPieces = ({ artData, latLng }) => {
+  const [display, setDisplay] = useState(false);
+
+  const toggleCard = (e) => {
+    setDisplay(!display);
+  };
+
   if (artData) {
     return artData.map((record, index) => {
       return (
@@ -15,6 +21,8 @@ const ArtPieces = ({ artData, latLng }) => {
           dimensions={record.dimensions}
           classification={record.classification}
           latLng={latLng[index]}
+          toggleCard={toggleCard}
+          display={display}
         />
       );
     });
