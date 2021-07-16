@@ -2,10 +2,10 @@ import ArtPiece from './ArtPiece';
 import React, { useState } from 'react';
 
 const ArtPieces = ({ artData, latLng }) => {
-  const [display, setDisplay] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleCard = (e) => {
-    setDisplay(!display);
+  const toggleOpen = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   if (artData) {
@@ -21,8 +21,9 @@ const ArtPieces = ({ artData, latLng }) => {
           dimensions={record.dimensions}
           classification={record.classification}
           latLng={latLng[index]}
-          toggleCard={toggleCard}
-          display={display}
+          index={index}
+          activeIndex={activeIndex}
+          toggleOpen={toggleOpen}
         />
       );
     });
