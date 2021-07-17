@@ -10,47 +10,47 @@ const ArtPiece = ({
   dimensions,
   classification,
   latLng,
-  toggleCard,
+  toggleOpen,
   display,
+  index,
+  activeIndex,
 }) => {
-  const [hideDescription, setHideDescription] = useState(true);
-
   if (primaryimageurl === null) {
     return null;
   }
 
-  // const handleClick = (e) => {
-  //   setHideDescription(!hideDescription);
-  // };
-
-  if (display === false) {
+  if (activeIndex === index) {
     return (
-      <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => toggleCard(e)}>
-        <div className="flex justify-center">
-          <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+      <>
+        <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
+          <div className="flex justify-center">
+            <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+          </div>
+
+          <div className="p-2">
+            <h1>{title}</h1>
+            <p>Artist:</p>
+            <p>{medium}</p>
+            <p>{dated}</p>
+            <p>{dimensions}</p>
+          </div>
+
+          <div className="">
+            <Map latLng={latLng} />
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="border-2 border-gray-600 mx-3 my-4" onClick={(e) => toggleCard(e)}>
-      <div className="flex justify-center">
-        <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+    <>
+      <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
+        <div className="flex justify-center">
+          <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+        </div>
       </div>
-
-      <div className="p-2">
-        <h1>{title}</h1>
-        <p>Artist:</p>
-        <p>{medium}</p>
-        <p>{dated}</p>
-        <p>{dimensions}</p>
-      </div>
-
-      {/* <div className="">
-          <Map latLng={latLng} />
-        </div> */}
-    </div>
+    </>
   );
 };
 

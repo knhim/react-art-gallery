@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
+import Map from './Map';
 import data from './data';
 import axios from 'axios';
 
@@ -65,6 +66,7 @@ const App = () => {
   return (
     <>
       <h1>Art Gallery</h1>
+      {/* <Map /> */}
       <ArtPieces artData={artData} latLng={data} /* latLng={latLng}*/ />
     </>
   );
