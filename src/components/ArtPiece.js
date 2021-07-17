@@ -24,7 +24,7 @@ const ArtPiece = ({
       <>
         <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
           <div className="flex justify-center">
-            <img className="object-contain" src={primaryimageurl} alt={title} />
+            <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
           </div>
 
           <div className="p-2">
@@ -39,7 +39,7 @@ const ArtPiece = ({
             <Map latLng={latLng} />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
@@ -47,7 +47,7 @@ const ArtPiece = ({
     <>
       <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
         <div className="flex justify-center">
-          <img className="object-contain" src={primaryimageurl} alt={title} />
+          <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
         </div>
       </div>
     </>
