@@ -2,12 +2,13 @@ import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
 import Map from './Map';
+import Credit from './Credit';
 import data from './data';
 import axios from 'axios';
 
 const App = () => {
   const [artData, setArtData] = useState([]);
-  const [locations, setLocations] = useState([]);
+  const [fullObject, setFullObject] = useState([]);
   const [latLng, setLatLng] = useState([]);
 
   useEffect(() => {
@@ -41,20 +42,20 @@ const App = () => {
             },
           });
 
-          setLocations((locations) => [...locations, responseLocation.data]);
+          setFullObject((objects) => [...objects, responseLocation.data]);
 
           //after that request is finished, use location data to make a request to positionStack to grab lattitude and longitude
-          // const latLngResponse = await axios(`http://api.positionstack.com/v1/forward?`, {
-          //   params: {
-          //     access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
-          //     query: responseLocation.data.places[0].displayname,
-          //   },
-          // });
+          const latLngResponse = await axios(`http://api.positionstack.com/v1/forward?`, {
+            params: {
+              access_key: process.env.REACT_APP_POSITIONSTACK_API_KEY,
+              query: responseLocation.data.places[0].displayname,
+            },
+          });
 
-          // // data.data[0] to grab first value from array response
-          // setLatLng((latLng) => [...latLng, latLngResponse.data.data[0]]);
+          //  data.data[0] to grab first value from array response
+          setLatLng((latLng) => [...latLng, latLngResponse.data.data[0]]);
         });
-        // setArtData((artData) => [...artData, data]);
+        setArtData((artData) => [...artData, data]);
       } catch (err) {
         console.error(err);
       }
@@ -66,8 +67,8 @@ const App = () => {
   return (
     <>
       <h1>Art Gallery</h1>
-      {/* <Map /> */}
-      <ArtPieces artData={artData} latLng={data} /* latLng={latLng}*/ />
+      <ArtPieces artData={artData} fullObject={fullObject} /*latLng={data}*/ latLng={latLng} />
+      <Credit />
     </>
   );
 };
