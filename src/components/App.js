@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
 import Map from './Map';
 import Credit from './Credit';
-import data from './data';
+// import data from './data';
 import axios from 'axios';
 
 const App = () => {
@@ -55,7 +55,6 @@ const App = () => {
           //  data.data[0] to grab first value from array response
           setLatLng((latLng) => [...latLng, latLngResponse.data.data[0]]);
         });
-        setArtData((artData) => [...artData, data]);
       } catch (err) {
         console.error(err);
       }
@@ -66,7 +65,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Art Gallery</h1>
+      <h1 className="text-center text-gray-900 font-bold m-2">Art Gallery</h1>
       <ArtPieces artData={artData} fullObject={fullObject} /*latLng={data}*/ latLng={latLng} />
       <Credit />
     </>

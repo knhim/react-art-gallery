@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
 const Map = ({ latLng }) => {
+  console.log(latLng);
   const mapRef = useRef(null);
 
   const style = {
@@ -32,6 +33,10 @@ const Map = ({ latLng }) => {
       );
     }
   });
+
+  if (latLng === undefined) {
+    return <p>No map available</p>;
+  }
 
   return <div id="map" style={style}></div>;
 };
