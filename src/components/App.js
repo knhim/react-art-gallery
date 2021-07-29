@@ -66,7 +66,10 @@ const App = () => {
   return (
     <>
       <h1 className="text-center text-gray-900 font-bold m-2">Art Gallery</h1>
-      <ArtPieces artData={artData} fullObject={fullObject} /*latLng={data}*/ latLng={latLng} />
+      <div className="">
+        <ArtPieces artData={artData} fullObject={fullObject} /*latLng={data}*/ latLng={latLng} />
+      </div>
+
       <Credit />
     </>
   );

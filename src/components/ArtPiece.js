@@ -22,9 +22,12 @@ const ArtPiece = ({
   if (activeIndex === index && latLng === undefined) {
     return (
       <>
-        <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
+        <div
+          className="border-2 border-gray-600 mx-3 my-4 lg:max-w-sm w-6/12 mx-auto"
+          onClick={() => toggleOpen(index)}
+        >
           <div className="flex justify-center">
-            <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+            <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
           </div>
 
           <div className="p-2">
@@ -42,9 +45,12 @@ const ArtPiece = ({
   } else if (activeIndex === index) {
     return (
       <>
-        <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
+        <div
+          className="border-2 border-gray-600 mx-3 my-4 lg:max-w-sm mx-auto"
+          onClick={() => toggleOpen(index)}
+        >
           <div className="flex justify-center">
-            <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+            <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
           </div>
 
           <div className="p-2">
@@ -62,12 +68,14 @@ const ArtPiece = ({
       </>
     );
   }
-
   return (
     <>
-      <div className="border-2 border-gray-600 mx-3 my-4" onClick={() => toggleOpen(index)}>
+      <div
+        className="image-list border-2 border-gray-600 mx-3 my-4 lg:max-w-sm mx-auto"
+        onClick={() => toggleOpen(index)}
+      >
         <div className="flex justify-center">
-          <img className="object-contain w-full max-h-96" src={primaryimageurl} alt={title} />
+          <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
         </div>
       </div>
     </>
