@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ArtPiece.css';
 import Map from './Map';
 
 const ArtPiece = ({
@@ -23,7 +24,7 @@ const ArtPiece = ({
     return (
       <>
         <div
-          className="border-2 border-gray-600 mx-3 my-4 lg:max-w-sm w-6/12 mx-auto"
+          className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
           onClick={() => toggleOpen(index)}
         >
           <div className="flex justify-center">
@@ -46,7 +47,7 @@ const ArtPiece = ({
     return (
       <>
         <div
-          className="border-2 border-gray-600 mx-3 my-4 lg:max-w-sm mx-auto"
+          className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
           onClick={() => toggleOpen(index)}
         >
           <div className="flex justify-center">
@@ -71,11 +72,11 @@ const ArtPiece = ({
   return (
     <>
       <div
-        className="image-list border-2 border-gray-600 mx-3 my-4 lg:max-w-sm mx-auto"
+        className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
         onClick={() => toggleOpen(index)}
       >
         <div className="flex justify-center">
-          <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
+          <img className="object-contain max-h-96 lg:h-full" src={primaryimageurl} alt={title} />
         </div>
       </div>
     </>

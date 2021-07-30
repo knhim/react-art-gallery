@@ -66,7 +66,7 @@ const App = () => {
   return (
     <>
       <h1 className="text-center text-gray-900 font-bold m-2">Art Gallery</h1>
-      <div className="">
+      <div className="image-list">
         <ArtPieces artData={artData} fullObject={fullObject} /*latLng={data}*/ latLng={latLng} />
       </div>
 
