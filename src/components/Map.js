@@ -2,12 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
 const Map = ({ latLng }) => {
-  console.log(latLng);
   const mapRef = useRef(null);
 
   const style = {
     width: '100%',
-    height: '150px',
+    height: '200px',
   };
 
   useEffect(() => {

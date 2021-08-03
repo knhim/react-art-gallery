@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ArtPiece.css';
 import Map from './Map';
 
 const ArtPiece = ({
@@ -24,35 +23,14 @@ const ArtPiece = ({
     return (
       <>
         <div
-          className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
+          className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
           onClick={() => toggleOpen(index)}
         >
-          <div className="flex justify-center">
-            <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
-          </div>
-
-          <div className="p-2">
-            <h1>{title}</h1>
-            <p>Artist:</p>
-            <p>{medium}</p>
-            <p>{dated}</p>
-            <p>{dimensions}</p>
-          </div>
-
-          <p className="mb-2 text-center italic">No map available</p>
-        </div>
-      </>
-    );
-  } else if (activeIndex === index) {
-    return (
-      <>
-        <div
-          className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
-          onClick={() => toggleOpen(index)}
-        >
-          <div className="flex justify-center">
-            <img className="object-contain max-h-96" src={primaryimageurl} alt={title} />
-          </div>
+          <img
+            className="object-contain max-h-96 lg:max-h-full"
+            src={primaryimageurl}
+            alt={title}
+          />
 
           <div className="p-2">
             <h1>{title}</h1>
@@ -63,6 +41,32 @@ const ArtPiece = ({
           </div>
 
           <div>
+            <p className="mb-2 text-center italic">No map available</p>
+          </div>
+        </div>
+      </>
+    );
+  } else if (activeIndex === index) {
+    return (
+      <>
+        <div
+          className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
+          onClick={() => toggleOpen(index)}
+        >
+          <img
+            className="object-contain max-h-96 lg:max-h-full"
+            src={primaryimageurl}
+            alt={title}
+          />
+          <div className="p-2">
+            <h1>{title}</h1>
+            <p>Artist:</p>
+            <p>{medium}</p>
+            <p>{dated}</p>
+            <p>{dimensions}</p>
+          </div>
+
+          <div className="p-2">
             <Map latLng={latLng} />
           </div>
         </div>
@@ -72,12 +76,10 @@ const ArtPiece = ({
   return (
     <>
       <div
-        className="border-2 border-gray-600 mx-3 my-4 lg:w-auto lg:mx-auto"
+        className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
         onClick={() => toggleOpen(index)}
       >
-        <div className="flex justify-center">
-          <img className="object-contain max-h-96 lg:h-full" src={primaryimageurl} alt={title} />
-        </div>
+        <img className="object-contain max-h-96 lg:max-h-full" src={primaryimageurl} alt={title} />
       </div>
     </>
   );
