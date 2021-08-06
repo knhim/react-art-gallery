@@ -17,7 +17,6 @@ const ArtPieces = ({ artData, fullObject, latLng }) => {
           title={record.title}
           medium={record.medium}
           dated={record.dated}
-          // worktypes={record.worktypes[0].worktype}
           dimensions={record.dimensions}
           classification={record.classification}
           latLng={latLng[index]}

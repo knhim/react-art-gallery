@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Map from './Map';
+import Skeleton from 'react-loading-skeleton';
 
 const ArtPiece = ({
   primaryimageurl,
   title,
   medium,
   dated,
-  worktypes,
   dimensions,
   classification,
   latLng,
@@ -32,16 +32,17 @@ const ArtPiece = ({
             alt={title}
           />
 
-          <div className="p-2">
+          <div className="p-2 border border-gray-300 mx-2 my-3">
             <h1>{title}</h1>
-            <p>Artist:</p>
             <p>{medium}</p>
             <p>{dated}</p>
             <p>{dimensions}</p>
           </div>
 
           <div>
-            <p className="mb-2 text-center italic">No map available</p>
+            <p className="p-2 border border-gray-300 mx-2 my-3 text-center italic">
+              No map available
+            </p>
           </div>
         </div>
       </>
@@ -58,9 +59,8 @@ const ArtPiece = ({
             src={primaryimageurl}
             alt={title}
           />
-          <div className="p-2">
+          <div className="p-2 border border-gray-300 mx-2 my-3">
             <h1>{title}</h1>
-            <p>Artist:</p>
             <p>{medium}</p>
             <p>{dated}</p>
             <p>{dimensions}</p>
@@ -74,14 +74,20 @@ const ArtPiece = ({
     );
   }
   return (
-    <>
-      <div
-        className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
-        onClick={() => toggleOpen(index)}
-      >
-        <img className="object-contain max-h-96 lg:max-h-full" src={primaryimageurl} alt={title} />
-      </div>
-    </>
+    <div>
+      {(
+        <div
+          className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
+          onClick={() => toggleOpen(index)}
+        >
+          <img
+            className="object-contain max-h-96 lg:max-h-full"
+            src={primaryimageurl}
+            alt={title}
+          />
+        </div>
+      ) || <Skeleton duration={2} delay={1} width={100} height={100} />}
+    </div>
   );
 };
 
