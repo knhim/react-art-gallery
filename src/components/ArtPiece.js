@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Map from './Map';
-import Skeleton from 'react-loading-skeleton';
 
 const ArtPiece = ({
   primaryimageurl,
@@ -75,7 +74,7 @@ const ArtPiece = ({
   }
   return (
     <div>
-      {(
+      {
         <div
           className="border-2 border-gray-600 mx-3 my-4 flex flex-col lg:w-3/12 lg:h-auto lg:m-auto lg:my-4"
           onClick={() => toggleOpen(index)}
@@ -86,7 +85,7 @@ const ArtPiece = ({
             alt={title}
           />
         </div>
-      ) || <Skeleton duration={2} delay={1} width={100} height={100} />}
+      }
     </div>
   );
 };

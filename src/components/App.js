@@ -1,7 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState } from 'react';
 import ArtPieces from './ArtPieces';
-import Map from './Map';
 import Credit from './Credit';
 // import data from './data';
 import axios from 'axios';

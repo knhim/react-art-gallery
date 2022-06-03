@@ -19,7 +19,7 @@ const Map = ({ latLng }) => {
         }),
       ],
     });
-  }, []);
+  }, [latLng.latitude, latLng.longitude]);
 
   // add a marker
   const markerRef = useRef(null);
