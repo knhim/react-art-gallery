@@ -2,7 +2,7 @@
   "name": "react-art-gallery",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://knhim.github.io",
+  "homepage": "https://knhim.github.io/react-art-gallery",
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.14.1",
